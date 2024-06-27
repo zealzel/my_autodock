@@ -1,0 +1,13 @@
+material tag30
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture tag36h11-30.png
+			}
+		}
+	}
+}
