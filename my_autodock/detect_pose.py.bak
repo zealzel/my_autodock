@@ -23,10 +23,10 @@ class DockPosePublisher(Node):
             .get_parameter_value()
             .string_value
         )
-        self.dock_tag_ids = (
-            self.declare_parameter("dock_tag_ids", [10, 20, 30])
+        self.dock_tag_id = (
+            self.declare_parameter("dock_tag_id", 30)
             .get_parameter_value()
-            .integer_array_value
+            .integer_value
         )
 
     def detection_callback(self, msg):
@@ -35,7 +35,9 @@ class DockPosePublisher(Node):
             if not self.use_first_detection:
                 if (
                     # detection.family == self.dock_tag_family
-                    detection.id in self.dock_tag_ids
+                    # and detection.id == self.dock_tag_id
+                    #
+                    detection.id == self.dock_tag_id
                 ):
                     pose.header = msg.header
                     pose.pose = detection.pose.pose.pose

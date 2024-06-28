@@ -21,7 +21,10 @@ def generate_launch_description():
                 ("camera_info", "camera/color/camera_info"),
                 ("image_rect", "camera/color/image_rect"),
                 ("image_rect/compressed", "camera/color/image_rect/compressed"),
-                ("image_rect/compressedDepth", "camera/color/image_rect/compressedDepth"),
+                (
+                    "image_rect/compressedDepth",
+                    "camera/color/image_rect/compressedDepth",
+                ),
                 ("image_rect/theora", "camera/color/image_rect/theora"),
             ],
         ),
@@ -48,6 +51,8 @@ def generate_launch_description():
         package="my_autodock",
         executable="detect_pose_node",
         name="detect_pose_node",
+        # parameters=[{"dock_tag_id": 20}],
+        parameters=[{"dock_tag_ids": [10, 20, 30]}],
     )
     return LaunchDescription(
         [

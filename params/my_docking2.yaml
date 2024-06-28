@@ -16,8 +16,8 @@ docking_server:
 
     # Types of docks
 
-    dock_plugins: ['my_dock_forward_yaw1', 'my_dock_forward_yaw2', 'my_dock_backward']
-    my_dock_forward_yaw1:
+    dock_plugins: ['my_dock_forward' , 'my_dock_forward_yaw1', 'my_dock_forward_yaw2', 'my_dock_forward_yaw3', 'my_dock_backward']
+    my_dock_forward:
       plugin: 'opennav_docking::SimpleChargingDock'
       filter_coef: 0.1
       docking_threshold: 0.01
@@ -29,27 +29,22 @@ docking_server:
       external_detection_rotation_pitch: 0.0
       #
       staging_x_offset: 0.0
-      staging_yaw_offset: 3.14159
+      staging_yaw_offset: 0.0
       dock_backwards: false
       external_detection_translation_x: -0.5
       external_detection_rotation_yaw: 3.14159
 
+    my_dock_forward_yaw1:
+      plugin: 'opennav_docking::SimpleChargingDock'
+      staging_yaw_offset: 0.0
+
+    my_dock_forward_yaw3:
+      plugin: 'opennav_docking::SimpleChargingDock'
+      staging_yaw_offset: 3.14159
+
     my_dock_forward_yaw2:
       plugin: 'opennav_docking::SimpleChargingDock'
-      filter_coef: 0.1
-      docking_threshold: 0.01
-      use_external_detection_pose: true
-      use_battery_status: false # true
-      external_detection_timeout: 1.0
-      external_detection_translation_y: 0.0
-      external_detection_rotation_roll: 0.0
-      external_detection_rotation_pitch: 0.0
-      #
-      staging_x_offset: 0.0
       staging_yaw_offset: 1.571
-      dock_backwards: false
-      external_detection_translation_x: -0.5
-      external_detection_rotation_yaw: 3.14159
 
     my_dock_backward:
       plugin: 'opennav_docking::SimpleChargingDock'
@@ -77,16 +72,21 @@ docking_server:
       #
 
     # Dock instances
-    docks: ['home_dock_3', 'home_dock_2']
-    home_dock_3: # frame3
+    docks: ['home_dock_1', 'home_dock_2', 'home_dock_3']
+    home_dock_1: # frame2
       type: 'my_dock_forward_yaw1'
       frame: map
-      pose: [0.0, -0.3, 0.0]
+      pose: [1.0, -0.3, 0.0]
 
     home_dock_2: # frame2
       type: 'my_dock_forward_yaw2'
       frame: map
       pose: [-0.3, 2.0, 0.0]
+
+    home_dock_3: # frame3
+      type: 'my_dock_forward_yaw3'
+      frame: map
+      pose: [0.0, -0.3, 0.0]
 
     controller:
       k_phi: 3.0
