@@ -51,8 +51,8 @@ def generate_launch_description():
         package="my_autodock",
         executable="detect_pose_node",
         name="detect_pose_node",
-        # parameters=[{"dock_tag_id": 20}],
         parameters=[{"dock_tag_ids": [10, 20, 30]}],
+        # parameters=[{"dock_tag_ids": [30]}],
     )
     return LaunchDescription(
         [

@@ -13,12 +13,11 @@ docking_server:
     fixed_frame: "odom"
     dock_prestaging_tolerance: 0.1
       # dock_prestaging_tolerance: 0.5
-    dock_backwards: false
-    # dock_backwards: true
+    dock_backwards: true
 
     # Types of docks
-    dock_plugins: ['my_dock_backward']
-    my_dock_backward:
+    dock_plugins: ['my_dock' , 'my_dock_yaw1', 'my_dock_yaw2', 'my_dock_yaw3']
+    my_dock:
       plugin: 'opennav_docking::SimpleChargingDock'
       filter_coef: 0.1
       docking_threshold: 0.01
@@ -28,29 +27,39 @@ docking_server:
       external_detection_translation_y: 0.0
       external_detection_rotation_roll: 0.0
       external_detection_rotation_pitch: 0.0
-      #
-      # dock_backwards frame3
       staging_x_offset: 0.0
       staging_yaw_offset: 0.0
-      # 
       external_detection_translation_x: 0.8
       external_detection_rotation_yaw: 0.0
-      # external_detection_translation_x: -2.0
-      # external_detection_rotation_yaw: 3.14159
-      #
-      # dock_backwards frame2
-      # staging_x_offset: 0.0
-      # staging_yaw_offset: -1.571
-      # external_detection_translation_x: 0.4
-      # external_detection_rotation_yaw: 0.0
-      #
+
+    my_dock_yaw1:
+      plugin: 'opennav_docking::SimpleChargingDock'
+      staging_yaw_offset: 3.14159
+
+    my_dock_yaw2:
+      plugin: 'opennav_docking::SimpleChargingDock'
+      staging_yaw_offset: -1.571
+
+    my_dock_yaw3:
+      plugin: 'opennav_docking::SimpleChargingDock'
+      staging_yaw_offset: 0.0
 
     # Dock instances
-    docks: ['dock3']
-    dock3: # frame3 backward
-      type: 'my_dock_backward'
+    docks: ['home_dock_1', 'home_dock_2', 'home_dock_3']
+    home_dock_1: # frame2
+      type: 'my_dock_yaw1'
       frame: map
-      pose: [-0.5, -0.4, 0.0]
+      pose: [1.0, -0.3, 0.0]
+
+    home_dock_2: # frame2
+      type: 'my_dock_yaw2'
+      frame: map
+      pose: [-0.3, 2.0, 0.0]
+
+    home_dock_3: # frame3
+      type: 'my_dock_yaw3'
+      frame: map
+      pose: [0.0, -0.3, 0.0]
 
     controller:
       k_phi: 3.0

@@ -15,29 +15,33 @@ def generate_launch_description():
     )
 
     dock_params_dir = os.path.join(get_package_share_directory(package_name), "params")
-    params_file = os.path.join(dock_params_dir, "my_docking2.yaml")
+
+    params_file = os.path.join(dock_params_dir, "my_docking_backward.yaml")
+    # params_file = os.path.join(dock_params_dir, "my_docking_forward.yaml")
+    # params_file = os.path.join(dock_params_dir, "my_docking2.yaml")
 
     # 讀取 YAML 文件
     with open(params_file, 'r') as file:
         params = yaml.safe_load(file)
 
     # 動態修改參數
-    dock_forward_params = params['docking_server']['ros__parameters']['my_dock_forward']
+    # dock_params = params['docking_server']['ros__parameters']['my_dock_forward']
+    dock_params = params['docking_server']['ros__parameters']['my_dock']
 
-    # 保留 my_dock_forward_yaw1 和 my_dock_forward_yaw2 的 staging_yaw_offset
-    my_dock_forward_yaw1_staging_yaw_offset = params['docking_server']['ros__parameters']['my_dock_forward_yaw1']['staging_yaw_offset']
-    my_dock_forward_yaw2_staging_yaw_offset = params['docking_server']['ros__parameters']['my_dock_forward_yaw2']['staging_yaw_offset']
-    my_dock_forward_yaw3_staging_yaw_offset = params['docking_server']['ros__parameters']['my_dock_forward_yaw3']['staging_yaw_offset']
+    # 保留 my_dock_yaw1 和 my_dock_yaw2 的 staging_yaw_offset
+    my_dock_yaw1_staging_yaw_offset = params['docking_server']['ros__parameters']['my_dock_yaw1']['staging_yaw_offset']
+    my_dock_yaw2_staging_yaw_offset = params['docking_server']['ros__parameters']['my_dock_yaw2']['staging_yaw_offset']
+    my_dock_yaw3_staging_yaw_offset = params['docking_server']['ros__parameters']['my_dock_yaw3']['staging_yaw_offset']
 
-    # 設置 my_dock_forward_yaw1 和 my_dock_forward_yaw2 的參數
-    params['docking_server']['ros__parameters']['my_dock_forward_yaw1'] = dock_forward_params.copy()
-    params['docking_server']['ros__parameters']['my_dock_forward_yaw2'] = dock_forward_params.copy()
-    params['docking_server']['ros__parameters']['my_dock_forward_yaw3'] = dock_forward_params.copy()
+    # 設置 my_dock_yaw1 和 my_dock_yaw2 的參數
+    params['docking_server']['ros__parameters']['my_dock_yaw1'] = dock_params.copy()
+    params['docking_server']['ros__parameters']['my_dock_yaw2'] = dock_params.copy()
+    params['docking_server']['ros__parameters']['my_dock_yaw3'] = dock_params.copy()
 
     # 恢復 staging_yaw_offset
-    params['docking_server']['ros__parameters']['my_dock_forward_yaw1']['staging_yaw_offset'] = my_dock_forward_yaw1_staging_yaw_offset
-    params['docking_server']['ros__parameters']['my_dock_forward_yaw2']['staging_yaw_offset'] = my_dock_forward_yaw2_staging_yaw_offset
-    params['docking_server']['ros__parameters']['my_dock_forward_yaw3']['staging_yaw_offset'] = my_dock_forward_yaw3_staging_yaw_offset
+    params['docking_server']['ros__parameters']['my_dock_yaw1']['staging_yaw_offset'] = my_dock_yaw1_staging_yaw_offset
+    params['docking_server']['ros__parameters']['my_dock_yaw2']['staging_yaw_offset'] = my_dock_yaw2_staging_yaw_offset
+    params['docking_server']['ros__parameters']['my_dock_yaw3']['staging_yaw_offset'] = my_dock_yaw3_staging_yaw_offset
 
     dock_detection_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(

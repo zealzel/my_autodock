@@ -24,6 +24,7 @@ class DockPosePublisher(Node):
             .string_value
         )
         self.dock_tag_ids = (
+            # self.declare_parameter("dock_tag_ids", [30])
             self.declare_parameter("dock_tag_ids", [10, 20, 30])
             .get_parameter_value()
             .integer_array_value

@@ -90,8 +90,8 @@ def generate_launch_description():
     return LaunchDescription(
         [
             SetEnvironmentVariable(name="GAZEBO_RESOURCE_PATH", value=resource_path),
-            SetEnvironmentVariable(name="LINOROBOT2_BASE", value="zbotlino2"),
-            # SetEnvironmentVariable(name="LINOROBOT2_BASE", value="zbotlino2a"),
+            # SetEnvironmentVariable(name="LINOROBOT2_BASE", value="zbotlino2"),
+            SetEnvironmentVariable(name="LINOROBOT2_BASE", value="zbotlino2a"),
             world_arg,
             x_arg,
             y_arg,
