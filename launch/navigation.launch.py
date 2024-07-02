@@ -31,7 +31,7 @@ def generate_launch_description():
         name="rviz", default_value="true", description="Run rviz"
     )
     rviz_config_path = "/home/zealzel/.rviz2/nav2_camera.rviz"
-    default_map_path = get_path(package_name, ["maps", "mymap.yaml"])
+    default_map_path = get_path(package_name, ["maps", "room_with_tags.yaml"])
     map_arg = DeclareLaunchArgument(
         name="map",
         default_value=default_map_path,

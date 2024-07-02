@@ -30,7 +30,6 @@ def generate_launch_description():
         resource_path = pkg_install_path
 
     use_sim_time = True
-    # world_path = "/home/zealzel/my-gazebo-world/.sdf"
     world_path = get_path(package_name, ["worlds", "room_with_tags.sdf"])
 
     description_launch_path = get_path(

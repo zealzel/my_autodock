@@ -42,7 +42,7 @@ docking_server:
 
     my_dock_yaw3:
       plugin: "opennav_docking::SimpleChargingDock"
-      staging_yaw_offset: 0.0
+      staging_yaw_offset: 0.785
 
     # Dock instances
     docks: ["home_dock_1", "home_dock_2", "home_dock_3"]
@@ -59,7 +59,7 @@ docking_server:
     home_dock_3:
       type: "my_dock_yaw3"
       frame: map
-      pose: [0.0, -0.3, 0.0]
+      pose: [-1, -2.5, 0.0]
 
     controller:
       k_phi: 3.0
