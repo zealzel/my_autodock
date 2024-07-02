@@ -1,0 +1,15 @@
+In package opennav_docking 
+Replace below two lines in docking_server.cpp -> approachDock()
+
+  target_pose.pose.position.x += cos(yaw) * backward_projection;
+  target_pose.pose.position.y += sin(yaw) * backward_projection;
+
+into 
+
+  if (dock_backwards_ == false) {
+      target_pose.pose.position.x += cos(yaw) * backward_projection;
+      target_pose.pose.position.y += sin(yaw) * backward_projection;
+  } else {
+      target_pose.pose.position.x -= cos(yaw) * backward_projection;
+      target_pose.pose.position.y -= sin(yaw) * backward_projection;
+  }

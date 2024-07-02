@@ -12,11 +12,10 @@ docking_server:
     base_frame: "base_link"
     fixed_frame: "odom"
     dock_prestaging_tolerance: 0.1
-      # dock_prestaging_tolerance: 0.5
     dock_backwards: false
 
     # Types of docks
-    dock_plugins: ['my_dock' , 'my_dock_yaw1', 'my_dock_yaw2', 'my_dock_yaw3']
+    dock_plugins: ['my_dock', 'my_dock_yaw1', 'my_dock_yaw2', 'my_dock_yaw3']
     my_dock:
       plugin: 'opennav_docking::SimpleChargingDock'
       filter_coef: 0.1
@@ -24,12 +23,11 @@ docking_server:
       use_external_detection_pose: true
       use_battery_status: false # true
       external_detection_timeout: 1.0
+      staging_x_offset: 0.0
+      staging_yaw_offset: 0.0
       external_detection_translation_y: 0.0
       external_detection_rotation_roll: 0.0
       external_detection_rotation_pitch: 0.0
-      #
-      staging_x_offset: 0.0
-      staging_yaw_offset: 0.0
       external_detection_translation_x: -0.5
       external_detection_rotation_yaw: 3.14159
 
@@ -47,7 +45,7 @@ docking_server:
 
     # Dock instances
     docks: ['home_dock_1', 'home_dock_2', 'home_dock_3']
-    home_dock_1: # frame2
+    home_dock_1:
       type: 'my_dock_yaw1'
       frame: map
       pose: [1.0, -0.3, 0.0]
