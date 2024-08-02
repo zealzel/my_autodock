@@ -30,7 +30,8 @@ def generate_launch_description():
     use_rviz_arg = DeclareLaunchArgument(
         name="rviz", default_value="true", description="Run rviz"
     )
-    rviz_config_path = "/home/zealzel/.rviz2/nav2_camera.rviz"
+    # rviz_config_path = "/home/zealzel/.rviz2/nav2_camera.rviz"
+    rviz_config_path = get_path(package_name, ["rviz", "nav2_camera.rviz"])
     default_map_path = get_path(package_name, ["maps", "room_with_tags.yaml"])
     map_arg = DeclareLaunchArgument(
         name="map",
@@ -38,7 +39,9 @@ def generate_launch_description():
         description="Navigation map path",
         # condition=UnlessCondition(LaunchConfiguration("sim")),
     )
-    navigation_path = get_path("linorobot2_navigation", ["launch", "navigation.launch.py"])
+    navigation_path = get_path(
+        "linorobot2_navigation", ["launch", "navigation.launch.py"]
+    )
     lino_navigation = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(navigation_path),
         launch_arguments={

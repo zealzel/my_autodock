@@ -19,6 +19,7 @@ setup(
         (f"share/{package_name}/material/tag30/textures", glob("material/tag30/textures/*")),
         (f"share/{package_name}/worlds", glob("worlds/*")),
         (f"share/{package_name}/maps", glob("maps/*")),
+        (f"share/{package_name}/rviz", glob("rviz/*.rviz")),
         (f"share/{package_name}/params", glob("params/*")),
     ],
     install_requires=['setuptools'],
